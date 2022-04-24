@@ -37,7 +37,7 @@ export default function Home() {
       );
       // call the presaleMint from the contract, only whitelisted addresses would be able to mint
       const tx = await whitelistContract.presaleMint({
-        // value signifies the cost of one crypto dev which is "0.01" eth.
+        // value signifies the cost of one ZeeCard which is "0.01" eth.
         // We are parsing `0.01` string to ether using the utils library from ethers.js
         value: utils.parseEther("0.01"),
       });
@@ -45,7 +45,7 @@ export default function Home() {
       // wait for the transaction to get mined
       await tx.wait();
       setLoading(false);
-      window.alert("You successfully minted a Crypto Dev!");
+      window.alert("You successfully minted a ZeeCard!");
     } catch (err) {
       console.error(err);
     }
@@ -75,7 +75,7 @@ export default function Home() {
       // wait for the transaction to get mined
       await tx.wait();
       setLoading(false);
-      window.alert("You successfully minted a Crypto Dev!");
+      window.alert("You successfully minted a ZeeCard!");
     } catch (err) {
       console.error(err);
     }
@@ -243,9 +243,9 @@ export default function Home() {
 
     // If user is not connected to the Rinkeby network, let them know and throw an error
     const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 4) {
-      window.alert("Change the network to Rinkeby");
-      throw new Error("Change network to Rinkeby");
+    if (chainId !== 3) {
+      window.alert("Change the network to Ropsten");
+      throw new Error("Change network to Ropsten");
     }
 
     if (needSigner) {
@@ -264,7 +264,7 @@ export default function Home() {
       // Assign the Web3Modal class to the reference object by setting it's `current` value
       // The `current` value is persisted throughout as long as this page is open
       web3ModalRef.current = new Web3Modal({
-        network: "rinkeby",
+        network: "ropsten",
         providerOptions: {},
         disableInjectedProvider: false,
       });
@@ -338,7 +338,7 @@ export default function Home() {
         <div>
           <div className={styles.description}>
             Presale has started!!! If your address is whitelisted, Mint a
-            Crypto Dev 🥳
+            ZeeCard 🥳
           </div>
           <button className={styles.button} onClick={presaleMint}>
             Presale Mint 🚀
@@ -366,7 +366,7 @@ export default function Home() {
       </Head>
       <div className={styles.main}>
         <div>
-          <h1 className={styles.title}>Welcome to ZeeCards!</h1>
+          <h1 className={styles.title}>Welcome to Zee Cards!</h1>
           <div className={styles.description}>
             Its an NFT collection for developers in Crypto.
           </div>
@@ -381,7 +381,7 @@ export default function Home() {
       </div>
 
       <footer className={styles.footer}>
-        Made with &#10084; by ZeeCards
+        Made with &#10084; by SZeeS
       </footer>
     </div>
   );
